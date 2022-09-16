@@ -112,7 +112,8 @@ pip install frappe-bench > /dev/null
 
 # FIX DATABASE USER
 echo $'[+] Database Switch Authentication Mode.\n'
-mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password; ALTER USER 'root'@'localhost' IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+read -p 'Database Password (root): ' dbpass
+mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password; ALTER USER 'root'@'localhost' IDENTIFIED BY '"$dbpass"'; FLUSH PRIVILEGES;"
 
 # INSTANCE ERPNEXT
 echo $'[+] Setup Instance.\n'
